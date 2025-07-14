@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
+// Company:IC Innovation Studio
+// Engineer:DDDD
 //
 // Create Date: 2025/07/09 15:14:55
 // Design Name:
@@ -144,28 +144,28 @@ module SPI_top(
                   case (mode)
                     MODE00: begin
 
-                      data_out_reg[bite_num*8-1-data_reg_i] <= miso;//从设备接收数据
+                      data_out_reg[bite_num*8-1-data_reg_o] <= miso;//从设备接收数据
                       if(data_cnt == bite_num*16-1) begin
                         state <= IDLE;
                       end
                     end
                     MODE01: begin
 
-                      data_out_reg[bite_num*8-1-data_reg_o] <= miso;//从设备接收数据
+                      data_out_reg[bite_num*8-1-data_reg_i] <= miso;//从设备接收数据
                       if(data_cnt == bite_num*16-1) begin
                         state <= IDLE;
                       end
                     end
                     MODE10: begin
 
-                      data_out_reg[bite_num*8-1-data_reg_i] <= miso;//从设备接收数据
+                      data_out_reg[bite_num*8-1-data_reg_o] <= miso;//从设备接收数据
                       if(data_cnt == bite_num*16-1) begin
                         state <= IDLE;
                       end
                     end
                     MODE11: begin
 
-                      data_out_reg[bite_num*8-1-data_reg_o] <= miso;//从设备接收数据
+                      data_out_reg[bite_num*8-1-data_reg_i] <= miso;//从设备接收数据
                       if(data_cnt == bite_num*16-1) begin
                         state <= IDLE;
                       end

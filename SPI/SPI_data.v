@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: IC Innovation Studio
+// Engineer: DDDD
 // 
 // Create Date: 2025/07/09 18:04:04
 // Design Name: 
@@ -27,11 +27,11 @@ module SPI_data(
     input                               busy_reg                   ,//忙信号寄存器
     input                               finished                   ,//完成信号
     output reg                          start                      ,//开始信号
-    output               [  63: 0]      data_out                   ,
-    output               [   2: 0]      bite_num                    
+    output               [  63: 0]      data_out                   ,//输出数据
+    output               [   2: 0]      bite_num                    //输出数据宽度
     );
 
-    localparam                          REG                         = 8'h07 ;            
+    localparam                          REG                         = 8'h03 ;//数据量+1       
 
     reg                [  15: 0]        wait_cnt                    ;
     reg                                 en                          ;//使能信号
@@ -96,21 +96,15 @@ module SPI_data(
         end
     end
 
-    assign                              data_reg[0]                 = 16'h00f0;
-
+    //例
+    //数据1
+    assign                              data_reg[0]                 = 16'h05A2;
+    //数据1的字节数（含地址位）
     assign                              bite_num_reg[0]             = 3'd2;
-    // assign data_reg[2] = 8'h01;
-    // assign data_reg[3] = 8'hd0;
-    // assign data_reg[4] = 8'h00;
-    // assign data_reg[5] = 8'h00;
-
-    // assign data_reg[6] = 8'h03;
-    // assign data_reg[7] = 8'h00;
-    // assign data_reg[8] = 8'h23;
-    // assign data_reg[9] = 8'h35;
-
-    assign                              data_reg[1]                 = 40'h0400_ffff_ff;
-
-    assign                              bite_num_reg[1]             = 3'd5;
+    //数据2
+    assign                              data_reg[1]                 = 16'h8200;
+    //数据2的字节数（含地址位）
+    assign                              bite_num_reg[1]             = 3'd2;
+    //配置结束记得更改数据量常数
 
 endmodule
