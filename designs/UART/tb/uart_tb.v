@@ -8,7 +8,7 @@ module uart_tb();
     initial begin
         clk = 1'b0;
         rst_n = 1'b0;
-        #100;
+        #50;
         rst_n = 1'b1;
     end
 
@@ -58,18 +58,20 @@ module uart_tb();
         tx_data_valid = 1'b0;
         rx_data_ready = 1'b1;
 
-        #200;
+        #100;
         tx_data_valid = 1'b1;
 
         #10;
         tx_data_valid = 1'b0;
 
-        wait(tx_data_ready == 1'b1);
+        wait(rx_data_valid);
+        rx_data_ready = 1'b0;
 
+        wait(tx_data_ready == 1'b1);
         #10;
         tx_data = 8'h3C;
         tx_data_valid = 1'b1;
-        rx_data_ready = 1'b0;
+
 
         #10;
         tx_data_valid = 1'b0;
@@ -79,9 +81,9 @@ module uart_tb();
     assign                              rx_pin                      = tx_pin               ;
 
     initial begin
-        $dumpfile("/icarus/uart_tb.vcd"); // Update dumpfile path
+        $dumpfile("icarus/uart_tb.vcd"); // Use relative path, avoid leading slash on Windows
         $dumpvars(0, uart_tb);
-        #2000000;
+        #200000;
         $finish();
     end
 

@@ -77,7 +77,7 @@ end
 always@(posedge clk or negedge rst_n)
 begin
 	if(rst_n == 1'b0)
-		state <= S_IDLE;
+		state <= S_DATA;
 	else
 		state <= next_state;
 end

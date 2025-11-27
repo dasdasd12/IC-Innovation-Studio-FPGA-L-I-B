@@ -92,13 +92,13 @@ always@(posedge clk or negedge rst_n)
 begin
 	if(rst_n == 1'b0)
 		begin
-			tx_data_ready <= 1'b0;
+			tx_data_ready <= 1'b1;
 		end
 	else if(state == S_IDLE)
 		if(tx_data_valid == 1'b1)
 			tx_data_ready <= 1'b0;
 		else
-			tx_data_ready <= 1'b1;
+			tx_data_ready <= tx_data_ready;
 	else if(state == S_STOP && cycle_cnt == CYCLE - 1)
 			tx_data_ready <= 1'b1;
 end
