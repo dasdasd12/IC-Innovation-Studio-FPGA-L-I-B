@@ -1,8 +1,8 @@
 param(
-    [string]$tb = "tb/uart_tb.v",
+    [string]$tb = "tb/spi_tb.v",
     [string]$srcs = "src",
-    [string]$out = "icarus/uart_tb.vvp",
-    [string]$vcd = "icarus/uart_tb.vcd",
+    [string]$out = "icarus/spi_tb.vvp",
+    [string]$vcd = "icarus/spi_tb.vcd",
     [string]$gtkwavePath = "gtkwave"
 )
 
